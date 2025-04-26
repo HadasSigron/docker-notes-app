@@ -47,6 +47,18 @@ def add_note():
     return redirect('/')
 
 
+@app.route('/health')
+def health():
+    try:
+        notes = load_notes()
+        if isinstance(notes, list):
+            return 'OK', 200
+        else:
+            return 'Notes file is not a list', 500
+    except Exception as e:
+        return f'Error: {str(e)}', 500
+
+
 if __name__ == '__main__':
     # Create empty notes file if it doesn't exist
     if not os.path.exists(NOTES_FILE):
