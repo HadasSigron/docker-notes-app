@@ -1,7 +1,7 @@
 FROM python:3.9-alpine AS builder
 RUN apk add --no-cache build-base
 COPY requirements.txt .
-RUN pip install --no-cache-dir --perfix=/install -r requirements.txt
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 FROM python:3.9-alpine
 ENV NOTES_FILE=/data/notes.json
 ENV APP_NAME="Docker Notes App"
